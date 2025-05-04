@@ -18,12 +18,20 @@
       justify-content: center;
       min-height: 100vh;
       text-align: center;
+      padding: 2rem;
     }
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: #ccc;
     }
     .video-wrapper {
+      position: relative;
       width: 100%;
       max-width: 720px;
       aspect-ratio: 16 / 9;
@@ -33,6 +41,11 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+    .fallback {
+      color: #888;
+      font-size: 1rem;
+      margin-top: 1rem;
     }
     .links {
       display: flex;
@@ -56,12 +69,21 @@
 </head>
 <body>
   <h1>BRGB Coming Soon</h1>
+  <h2>Art Director & Creative Technologist</h2>
+
   <div class="video-wrapper">
-   <iframe width="600" height="450" src="https://www.youtube.com/watch?v=NXms1Dvs9cU" frameborder="0" allowfullscreen></iframe>
+    <iframe 
+      src="https://www.youtube.com/watch?v=NXms1Dvs9cU" 
+      title="YouTube video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+    <div class="fallback">Loading cool S#!t...</div>
   </div>
+
   <div class="links">
-    <a href="https://drive.google.com/file/d/14VGb8FoLYSjy13hrq4JwKwBg_pKfJWYR/view?usp=drive_link">CV</a>
-    <a href="https://drive.google.com/file/d/1N3P4xrR3P7-uW6lxUBxWP28EjR8Coy2b/view?usp=drive_link">PDF Deck (update soon)</a>
+    <a href="#">CV</a>
+    <a href="#">PDF Deck (2025 Update coming soon)</a>
   </div>
 </body>
 </html>

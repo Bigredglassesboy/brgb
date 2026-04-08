@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,65 +13,174 @@
       --accent: #ff3b3b;
       --max: 1180px;
     }
-* { box-sizing: border-box; }
-body { margin: 0; font-family: Inter, Arial, sans-serif; background: var(--bg); color: var(--text); }
-.container { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
 
-.nav { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-.hero { padding: 3rem 0 2rem; text-align: center; }
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
 
-.logo {
-  width: 90px; margin-bottom: 1rem; opacity: 0;
-  filter: contrast(1.2) drop-shadow(0 0 10px rgba(255,0,0,0.35));
-  animation: logoIntro 1.2s ease forwards, logoFlicker 3s ease 1.2s infinite;
-}
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
 
-h1 { font-size: clamp(3rem, 6vw, 6rem); margin: 0 0 1rem; letter-spacing: -0.05em; }
+    .hero {
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
 
-.glitch { position: relative; display: inline-block; }
-.glitch::before, .glitch::after { content: attr(data-text); position: absolute; inset: 0; opacity: 0; }
-.glitch:hover::before { color: cyan; transform: translate(2px,0); opacity: 0.6; }
-.glitch:hover::after { color: red; transform: translate(-2px,0); opacity: 0.6; }
+    .logo {
+      width: 90px;
+      margin-bottom: 1rem;
+      opacity: 0;
+      filter: contrast(1.2) drop-shadow(0 0 10px rgba(255,0,0,0.35));
+      animation: logoIntro 1.2s ease forwards, logoFlicker 3s ease 1.2s infinite;
+    }
 
-.role { color: var(--accent); font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    h1 {
+      font-size: clamp(3rem, 6vw, 6rem);
+      margin: 0 0 1rem;
+      letter-spacing: -0.05em;
+    }
 
-/* VIDEO ABOVE BUTTONS */
-.video-wrapper {
-  width: 100%; max-width: 900px; margin: 0 auto 1.8rem;
-  aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-.video-wrapper iframe { width: 100%; height: 100%; border: none; }
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
 
-/* BUTTONS (restored premium style) */
-.buttons {
-  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;
-}
-.btn {
-  padding: 0.9rem 1.4rem; border-radius: 999px; border: 1px solid var(--line);
-  background: rgba(255,255,255,0.05); color: var(--text);
-  transition: all 0.2s ease; backdrop-filter: blur(6px);
-}
-.btn:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
-.btn.primary { background: var(--text); color: #000; border: none; font-weight: bold; }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
 
-.about-text { max-width: 700px; margin: 0 auto; color: var(--muted); line-height: 1.7; }
+    .glitch:hover::before {
+      color: cyan;
+      transform: translate(2px,0);
+      opacity: 0.6;
+    }
 
-@keyframes logoIntro {
-  0% { opacity: 0; transform: translateY(-10px) scale(0.95); filter: blur(4px); }
-  60% { opacity: 1; transform: translateY(2px) scale(1.02); filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes logoFlicker {
-  0%, 92%, 100% { opacity: 1; transform: translateX(0); }
-  93% { opacity: 0.4; transform: translateX(2px); }
-  94% { opacity: 1; transform: translateX(-2px); }
-  95% { opacity: 0.6; transform: translateX(1px); }
-  96% { opacity: 1; transform: translateX(0); }
-}
-```
+    .glitch:hover::after {
+      color: red;
+      transform: translate(-2px,0);
+      opacity: 0.6;
+    }
 
+    .role {
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 1.8rem;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      transition: all 0.2s ease;
+      backdrop-filter: blur(6px);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn.primary {
+      background: var(--text);
+      color: #000;
+      border: none;
+      font-weight: bold;
+    }
+
+    .about-text {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @keyframes logoIntro {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+        filter: blur(4px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(2px) scale(1.02);
+        filter: blur(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes logoFlicker {
+      0%, 92%, 100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      93% {
+        opacity: 0.4;
+        transform: translateX(2px);
+      }
+      94% {
+        opacity: 1;
+        transform: translateX(-2px);
+      }
+      95% {
+        opacity: 0.6;
+        transform: translateX(1px);
+      }
+      96% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -86,21 +194,24 @@ h1 { font-size: clamp(3rem, 6vw, 6rem); margin: 0 0 1rem; letter-spacing: -0.05e
     <h1 class="glitch" data-text="BRGB">BRGB</h1>
     <div class="role" id="role">Creative Director</div>
 
-<!-- VIDEO NOW ABOVE BUTTONS -->
-<div class="video-wrapper">
-  <iframe src="https://www.youtube.com/embed/36RTOZhgoRc" allowfullscreen></iframe>
-</div>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/36RTOZhgoRc"
+        title="BRGB Showreel"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
 
-<div class="buttons">
-  <a class="btn" href="#">CV</a>
-  <a class="btn primary" href="#">PDF Deck</a>
-  <a class="btn" href="#">LinkedIn</a>
-</div>
+    <div class="buttons">
+      <a class="btn" href="#">CV</a>
+      <a class="btn primary" href="#">PDF Deck</a>
+      <a class="btn" href="#">LinkedIn</a>
+    </div>
 
-<p class="about-text">
-  Creative director, art director and creative technologist working across immersive media, digital experiences, real-time production and visual storytelling.
-</p>
-
+    <p class="about-text">
+      Creative director, art director and creative technologist working across immersive media, digital experiences, real-time production and visual storytelling.
+    </p>
   </section>
 
   <script>
@@ -112,27 +223,21 @@ h1 { font-size: clamp(3rem, 6vw, 6rem); margin: 0 0 1rem; letter-spacing: -0.05e
     ];
 
     let i = 0;
-    const roleEl = document.getElementById('role');
+    const roleEl = document.getElementById("role");
+
+    roleEl.style.transition = "opacity 180ms ease, transform 180ms ease";
 
     setInterval(() => {
       i = (i + 1) % roles.length;
-
-      // animate out
       roleEl.style.opacity = 0;
-      roleEl.style.transform = 'translateY(6px)';
+      roleEl.style.transform = "translateY(6px)";
 
       setTimeout(() => {
         roleEl.textContent = roles[i];
-
-        // animate in
         roleEl.style.opacity = 1;
-        roleEl.style.transform = 'translateY(0)';
+        roleEl.style.transform = "translateY(0)";
       }, 180);
-
     }, 2200);
-
-    // ensure smooth animation
-    roleEl.style.transition = 'opacity 180ms ease, transform 180ms ease';
   </script>
 
 </body>

@@ -15,6 +15,7 @@
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
@@ -37,21 +38,32 @@
     .hero {
       padding: 3rem 0 2rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .logo {
-      width: 90px;
-      margin-bottom: 1rem;
-      opacity: 0;
-      filter: contrast(1.2) drop-shadow(0 0 10px rgba(255,0,0,0.35));
-      animation: logoIntro 1.2s ease forwards, logoFlicker 3s ease 1.2s infinite;
-    }
-
-    h1 {
+    /* SHARED SCALE SYSTEM */
+    .hero-title {
       font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 1;
       margin: 0 0 1rem;
       letter-spacing: -0.05em;
     }
+
+    /* UPDATED LOGO SIZE (slightly bigger than text) */
+   .logo {
+  width: clamp(3.8rem, 7vw, 7rem);
+  height: auto;
+  margin-bottom: 0.6rem; /* increased spacing */
+  display: block;
+
+  transform: translateY(8px) scale(1.08);
+
+  opacity: 0;
+  filter: contrast(1.2) drop-shadow(0 0 10px rgba(255,0,0,0.35));
+  animation: logoIntro 1.2s ease forwards, logoFlicker 3s ease 1.2s infinite;
+}
 
     .glitch {
       position: relative;
@@ -150,39 +162,40 @@
       }
       60% {
         opacity: 1;
-        transform: translateY(2px) scale(1.02);
+        transform: translateY(2px) scale(1.08);
         filter: blur(0);
       }
       100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(8px) scale(1.08);
       }
     }
 
     @keyframes logoFlicker {
       0%, 92%, 100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(8px) scale(1.08) translateX(0);
       }
       93% {
         opacity: 0.4;
-        transform: translateX(2px);
+        transform: translateY(8px) scale(1.08) translateX(2px);
       }
       94% {
         opacity: 1;
-        transform: translateX(-2px);
+        transform: translateY(8px) scale(1.08) translateX(-2px);
       }
       95% {
         opacity: 0.6;
-        transform: translateX(1px);
+        transform: translateY(8px) scale(1.08) translateX(1px);
       }
       96% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(8px) scale(1.08) translateX(0);
       }
     }
   </style>
 </head>
+
 <body>
 
   <div class="container nav">
@@ -191,27 +204,28 @@
 
   <section class="hero">
     <img class="logo" src="https://github.com/Bigredglassesboy/brgb/blob/main/smallglasses.png?raw=true" alt="BRGB logo" />
-    <h1 class="glitch" data-text="BRGB">BRGB</h1>
+    
+    <h1 class="glitch hero-title" data-text="BRGB">BRGB</h1>
     <div class="role" id="role">Creative Director</div>
 
     <div class="video-wrapper">
       <iframe
         src="https://www.youtube.com/embed/36RTOZhgoRc"
-        title="BRGB Showreel"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
 
     <div class="buttons">
       <a class="btn" href="https://drive.google.com/file/d/13j70LfojxHGkUkXLM6ObBhSg39YxVi4R/view?usp=drive_link">CV</a>
-      <a class="btn primary" href="https://drive.google.com/file/d/1MQquyjhduI-4ZBesvsQyHhzDnIyqxm5Q/view?usp=sharing">PDF Deck</a>
+      <a class="btn primary" href="https://drive.google.com/file/d/1MQquyjhduI-4ZBesvsQyHhzDnIyqxm5Q/view?usp=drive_link">PDF Deck</a>
       <a class="btn" href="https://www.linkedin.com/in/patrick-girard-quinnell/">LinkedIn</a>
     </div>
 
     <p class="about-text">
       Creative director, art director and creative technologist working across immersive media, digital experiences, real-time production and visual storytelling.
     </p>
+
   </section>
 
   <script>
@@ -229,6 +243,7 @@
 
     setInterval(() => {
       i = (i + 1) % roles.length;
+
       roleEl.style.opacity = 0;
       roleEl.style.transform = "translateY(6px)";
 
@@ -237,6 +252,7 @@
         roleEl.style.opacity = 1;
         roleEl.style.transform = "translateY(0)";
       }, 180);
+
     }, 2200);
   </script>
 

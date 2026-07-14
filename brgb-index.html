@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BRGB — Patrick Girard Quinnell, Creative Director</title>
+<meta name="description" content="BRGB — Patrick Girard Quinnell. Creative Director and Creative Technologist working across XR, spatial storytelling and fashion." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#121316;
+    --ink:#F1EFE9;
+    --red:#FF5A42;
+    --cyan:#3FD3E0;
+    --line:#4A4C52;
+    --line-soft: rgba(241,239,233,0.14);
+    --max: 920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  ::selection{ background:var(--red); color:var(--paper); }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color: var(--ink);
+    opacity:0.62;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    position:relative;
+    padding-top:64px;
+    overflow:hidden;
+  }
+
+  .hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .mark{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .mark img{
+    height:30px;
+    width:auto;
+    display:block;
+  }
+
+  #stereo-field{
+    display:block;
+    width:100%;
+    height:min(58vh, 460px);
+    margin-top:28px;
+  }
+
+  .hero-name{
+    position:relative;
+    margin: -10% auto 0;
+    text-align:center;
+    pointer-events:none;
+  }
+
+  .hero-name h1{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size: clamp(64px, 14vw, 168px);
+    line-height:0.9;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .hero-name .split{
+    display:inline-block;
+  }
+
+  .hero-tagline{
+    max-width: 520px;
+    margin: 22px auto 0;
+    text-align:center;
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .hero-tagline strong{ font-weight:600; }
+
+  .hero-links{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin: 30px 0 56px;
+  }
+
+  .tag-link{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    text-decoration:none;
+    padding:9px 14px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+    display:inline-block;
+  }
+
+  .tag-link:hover{
+    background:var(--ink);
+    color:var(--paper);
+    transform: translateY(-1px);
+  }
+
+  .tag-link.accent{
+    border-color:var(--red);
+    color:var(--red);
+  }
+  .tag-link.accent:hover{
+    background:var(--red);
+    color:var(--paper);
+  }
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--line-soft);
+    margin:0;
+  }
+
+  /* ---------- REEL ---------- */
+
+  .reel-section{
+    padding: 56px 0 60px;
+  }
+
+  .panel-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:14px;
+  }
+
+  .panel-label .tick{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--ink);
+    opacity:0.5;
+  }
+
+  .frame{
+    border:1px solid var(--ink);
+    padding:6px;
+    position:relative;
+  }
+
+  .frame::before{
+    content:"";
+    position:absolute;
+    top:-1px; left:-1px; right:-1px; bottom:-1px;
+    border:1px solid var(--line-soft);
+    pointer-events:none;
+    margin:5px;
+  }
+
+  .frame .ratio{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#0b0b0d;
+    overflow:hidden;
+  }
+
+  .frame iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+
+  /* ---------- ABOUT ---------- */
+
+  .about{
+    padding: 8px 0 60px;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  @media (min-width: 720px){
+    .about{
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+    }
+  }
+
+  .about p{
+    font-size: 18px;
+    margin: 0 0 16px;
+    max-width: 58ch;
+  }
+
+  .about p.lede{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size: 26px;
+    line-height:1.35;
+    color:var(--ink);
+  }
+
+  /* ---------- CREDITS INDEX ---------- */
+
+  .credits{
+    padding: 8px 0 64px;
+  }
+
+  .credit-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .credit-row:last-child{ border-bottom: 1px solid var(--line-soft); }
+
+  .credit-row .name{
+    font-family:'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .credit-row .tags{
+    opacity:0.55;
+    text-align:right;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    padding: 48px 0 64px;
+    border-top: 1px solid var(--ink);
+  }
+
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 24px;
+  }
+
+  .foot-grid .big{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size: 30px;
+  }
+
+  .foot-links{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+  }
+
+  .foot-links a{ text-decoration:underline; text-underline-offset:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap hero-top">
+    <span class="mark">
+      <img src="https://github.com/Bigredglassesboy/brgb/blob/main/smallglasses.png?raw=true" alt="BRGB logo" />
+      <span class="eyebrow">BRGB / London</span>
+    </span>
+    <span class="eyebrow">Creative Director — Creative Technologist</span>
+  </div>
+
+  <canvas id="stereo-field" aria-hidden="true"></canvas>
+
+  <div class="hero-name wrap">
+    <h1><span class="split" data-text="BRGB">BRGB</span></h1>
+  </div>
+
+  <p class="hero-tagline">
+    Patrick Girard Quinnell directs <strong>immersive, experience-led work</strong> across fashion, culture and digital media — from XR installation to real-time production.
+  </p>
+
+  <div class="hero-links">
+    <a class="tag-link accent" href="https://drive.google.com/file/d/13j70LfojxHGkUkXLM6ObBhSg39YxVi4R/view?usp=drive_link" target="_blank" rel="noopener">CV ↗</a>
+    <a class="tag-link" href="https://drive.google.com/file/d/1ZVhZSNonQnEKy8ilQoA3-cyDoaTVf0gp/view?usp=drive_link" target="_blank" rel="noopener">PDF Deck ↗</a>
+    <a class="tag-link" href="https://www.linkedin.com/in/patrick-girard-quinnell/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="tag-link" href="https://www.instagram.com/bigredglassesboy/" target="_blank" rel="noopener">@Bigredglassesboy ↗</a>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<div class="wrap reel-section">
+  <div class="panel-label">
+    <span class="eyebrow">Reel</span>
+    <span class="tick">00:00 — showreel</span>
+  </div>
+  <div class="frame">
+    <div class="ratio">
+      <iframe src="https://www.youtube.com/embed/36RTOZhgoRc" title="BRGB Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<div class="wrap about">
+  <span class="eyebrow">About</span>
+  <div>
+    <p class="lede">Twelve years spent moving between the studio, the stage and the headset — building worlds that fashion and culture can actually walk into.</p>
+    <p>Pat is a London-based Creative Director and Creative Technologist running the independent studio BRGB, working across large-scale installation, XR and real-time production. He was an early hire at Satore Studio, helping grow the team from a handful of people to thirty-two, and has directed spatial and social-first work for Adidas, Hugo Boss, Moschino and Prada.</p>
+    <p>Alongside the studio, he lectures in Digital Media at the University of East London, teaching game art, immersive media and creative technology to the next set of people who'll build this stuff.</p>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<div class="wrap credits">
+  <span class="eyebrow">Selected work</span>
+  <div class="credit-row">
+    <span class="name">Regenerative Fashion Archive</span>
+    <span class="tags">Satore Studio · 100M+ views</span>
+  </div>
+  <div class="credit-row">
+    <span class="name">Adidas / Hugo Boss / Moschino / Prada</span>
+    <span class="tags">Brand &amp; campaign direction</span>
+  </div>
+  <div class="credit-row">
+    <span class="name">SDG Research Room</span>
+    <span class="tags">UEL · Unreal Engine 5 installation</span>
+  </div>
+  <div class="credit-row">
+    <span class="name">Satore Studio</span>
+    <span class="tags">Early hire → team of 32</span>
+  </div>
+</div>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <span class="big">Let's work together.</span>
+    <div class="foot-links">
+      <a href="mailto:hello@brgb.uk">hello@brgb.uk</a>
+      <a href="https://www.linkedin.com/in/patrick-girard-quinnell/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/bigredglassesboy/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var canvas = document.getElementById('stereo-field');
+  var ctx = canvas.getContext('2d');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w, h, points = [];
+  var mouseX = 0.5, mouseY = 0.5, targetSplit = 0, split = 0;
+
+  function resize(){
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    buildPoints();
+  }
+
+  function buildPoints(){
+    points = [];
+    var cols = Math.round(w / 26);
+    var rows = Math.round(h / 26);
+    for(var i=0;i<cols;i++){
+      for(var j=0;j<rows;j++){
+        var nx = (i+0.5)/cols;
+        var ny = (j+0.5)/rows;
+        // bias density toward a soft horizon band, like a lens curve
+        var d = Math.abs(ny - 0.5);
+        if (Math.random() > (0.9 - d*0.7)) continue;
+        points.push({
+          x: nx * w,
+          y: ny * h,
+          r: 0.6 + Math.random()*1.6,
+          phase: Math.random()*Math.PI*2
+        });
+      }
+    }
+  }
+
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    split += (targetSplit - split) * 0.06;
+
+    var cx = w * 0.5, cy = h * 0.5;
+
+    for(var k=0;k<points.length;k++){
+      var p = points[k];
+      var dx = (p.x - cx) / w;
+      var dy = (p.y - cy) / h;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      var offset = split * (4 + dist*26);
+      var bob = reduceMotion ? 0 : Math.sin(t*0.0006 + p.phase) * 1.2;
+
+      ctx.globalCompositeOperation = 'screen';
+
+      ctx.fillStyle = 'rgba(255,90,66,0.85)'; // red channel
+      ctx.beginPath();
+      ctx.arc(p.x - offset, p.y + bob, p.r, 0, Math.PI*2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(63,211,224,0.85)'; // cyan channel
+      ctx.beginPath();
+      ctx.arc(p.x + offset, p.y + bob, p.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function loop(t){
+    draw(t || 0);
+    if(!reduceMotion) requestAnimationFrame(loop);
+  }
+
+  canvas.addEventListener('mousemove', function(e){
+    var rect = canvas.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left) / rect.width;
+    mouseY = (e.clientY - rect.top) / rect.height;
+    targetSplit = (mouseX - 0.5) * 3.2;
+  });
+  canvas.addEventListener('mouseleave', function(){ targetSplit = 0; });
+  canvas.addEventListener('touchmove', function(e){
+    if(!e.touches[0]) return;
+    var rect = canvas.getBoundingClientRect();
+    var tx = (e.touches[0].clientX - rect.left) / rect.width;
+    targetSplit = (tx - 0.5) * 3.2;
+  }, {passive:true});
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  if(reduceMotion){
+    targetSplit = 1.1;
+    split = 1.1;
+    draw(0);
+  } else {
+    requestAnimationFrame(loop);
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -743,7 +743,7 @@
     for(var i=0;i<drops.length;i++){
       var ch = chars[Math.floor(Math.random()*chars.length)];
       var roll = Math.random();
-      ctx.fillStyle = roll > 0.88 ? '#FF5A42' : (roll > 0.8 ? '#F1EFE9' : '#2FE070');
+      ctx.fillStyle = roll < 0.55 ? '#FF5A42' : (roll < 0.78 ? '#FE0437' : (roll < 0.9 ? '#3FD3E0' : '#2FE070'));
       ctx.fillText(ch, i*fontSize, drops[i]*fontSize);
       if(drops[i]*fontSize > canvas.height && Math.random() > 0.96) drops[i] = 0;
       drops[i] += speeds[i];

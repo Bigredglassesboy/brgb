@@ -13,27 +13,22 @@
 <meta property="og:url" content="https://brgb.uk" />
 <meta property="og:image" content="https://i.ytimg.com/vi/36RTOZhgoRc/maxresdefault.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
   :root{
-    --display:'Bebas Neue', 'Helvetica Neue', Arial, sans-serif;
-    --text:'Archivo', 'Helvetica Neue', Arial, sans-serif;
     --paper:#121316;
     --ink:#F1EFE9;
+    --mute:rgba(241,239,233,0.62);
     --red:#FF5A42;
     --cyan:#3FD3E0;
-    --line:#4A4C52;
-    --line-soft: rgba(241,239,233,0.14);
-    --max: 920px;
+    --line:rgba(241,239,233,0.16);
+    --display:'Bebas Neue', 'Helvetica Neue', Arial, sans-serif;
+    --text:'Archivo', 'Helvetica Neue', Arial, sans-serif;
   }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
   body{
     margin:0;
     background:var(--paper);
@@ -42,502 +37,22 @@
     -webkit-font-smoothing:antialiased;
     line-height:1.5;
   }
-
   ::selection{ background:var(--red); color:var(--paper); }
-
   a{ color:inherit; }
-  a:focus-visible, button:focus-visible{
-    outline: 2px solid var(--ink);
-    outline-offset: 3px;
-  }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+  img{ max-width:100%; }
 
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:0 28px;
-  }
-
-  .eyebrow{
-    font-family:var(--text);
-    font-weight:500;
-    font-size:12px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color: var(--ink);
-    opacity:0.62;
-  }
-
-  /* ---------- HERO ---------- */
-
-  .hero{
-    position:relative;
-    padding-top:64px;
-    overflow:hidden;
-  }
-
-  .hero-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:16px;
-    flex-wrap:wrap;
-  }
-
-  .mark{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-
-  .mark img{
-    height:30px;
-    width:auto;
-    display:block;
-  }
-
-  #stereo-field{
-    display:block;
-    width:100%;
-    height:min(58vh, 460px);
-    margin-top:28px;
-  }
-
-  .hero-name{
-    position:relative;
-    margin: -10% auto 0;
-    text-align:center;
-    pointer-events:none;
-  }
-
-  .hero-name h1{
-    font-family:var(--display);
-    font-style:normal;
-    font-weight:400;
-    font-size: clamp(140px, 34vw, 380px);
-    line-height:0.78;
-    margin:0;
-    letter-spacing:0;
-  }
-
-  .hero-name .split{
-    display:inline-block;
-    position:relative;
-  }
-
-  .hero-name .split::before,
-  .hero-name .split::after{
-    content: attr(data-text);
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    -webkit-text-stroke: 2px currentColor;
-    mix-blend-mode: screen;
-  }
-
-  .hero-name .split::before{
-    color: var(--red);
-    animation: glitchRed 4s infinite;
-  }
-
-  .hero-name .split::after{
-    color: var(--cyan);
-    animation: glitchCyan 4s infinite;
-  }
-
-  @keyframes glitchRed{
-    0%, 84%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
-    85%{ transform:translate(-16px,-4px); opacity:1; clip-path:inset(10% 0 60% 0); }
-    86%{ transform:translate(10px,3px); opacity:0.9; clip-path:inset(60% 0 5% 0); }
-    87%{ transform:translate(-12px,4px); opacity:1; clip-path:inset(25% 0 40% 0); }
-    88%{ transform:translate(8px,-2px); opacity:0.8; clip-path:inset(45% 0 15% 0); }
-    89%{ transform:translate(0,0); opacity:0; }
-  }
-
-  @keyframes glitchCyan{
-    0%, 84%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
-    85%{ transform:translate(14px,2px); opacity:0.9; clip-path:inset(35% 0 25% 0); }
-    86%{ transform:translate(-11px,-3px); opacity:1; clip-path:inset(5% 0 65% 0); }
-    87%{ transform:translate(13px,-1px); opacity:0.85; clip-path:inset(65% 0 5% 0); }
-    88%{ transform:translate(-9px,3px); opacity:1; clip-path:inset(20% 0 45% 0); }
-    89%{ transform:translate(0,0); opacity:0; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .hero-name .split::before,
-    .hero-name .split::after{ animation:none; opacity:0; }
-  }
-
-  .glitch-label{
-    position:relative;
-    display:inline-block;
-  }
-
-  .glitch-label::before,
-  .glitch-label::after{
-    content: attr(data-text);
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    white-space:nowrap;
-  }
-
-  .glitch-label::before{
-    color: var(--red);
-    animation: glitchRedSmall 5s infinite;
-    animation-delay: 0.6s;
-  }
-
-  .glitch-label::after{
-    color: var(--cyan);
-    animation: glitchCyanSmall 5s infinite;
-    animation-delay: 0.6s;
-  }
-
-  @keyframes glitchRedSmall{
-    0%, 84%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
-    85%{ transform:translate(-3px,-1px); opacity:1; clip-path:inset(10% 0 60% 0); }
-    86%{ transform:translate(2px,1px); opacity:0.9; clip-path:inset(60% 0 5% 0); }
-    87%{ transform:translate(-2px,1px); opacity:1; clip-path:inset(25% 0 40% 0); }
-    88%{ transform:translate(2px,-1px); opacity:0.8; clip-path:inset(45% 0 15% 0); }
-    89%{ transform:translate(0,0); opacity:0; }
-  }
-
-  @keyframes glitchCyanSmall{
-    0%, 84%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
-    85%{ transform:translate(3px,1px); opacity:0.9; clip-path:inset(35% 0 25% 0); }
-    86%{ transform:translate(-2px,-1px); opacity:1; clip-path:inset(5% 0 65% 0); }
-    87%{ transform:translate(3px,-1px); opacity:0.85; clip-path:inset(65% 0 5% 0); }
-    88%{ transform:translate(-2px,1px); opacity:1; clip-path:inset(20% 0 45% 0); }
-    89%{ transform:translate(0,0); opacity:0; }
-  }
-
-  .wrap.about .glitch-label::before,
-  .wrap.about .glitch-label::after{ animation-delay: 2.1s; }
-
-  .wrap.credits .glitch-label::before,
-  .wrap.credits .glitch-label::after{ animation-delay: 3.6s; }
-
-  @media (prefers-reduced-motion: reduce){
-    .glitch-label::before,
-    .glitch-label::after{ animation:none; opacity:0; }
-  }
-
-  .hero-tagline{
-    max-width: 576px;
-    padding: 0 28px;
-    margin: 22px auto 0;
-    text-align:center;
-    font-size: 17px;
-    color: var(--ink);
-  }
-
-  .hero-tagline strong{ font-weight:600; }
-
-  .hero-links{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin: 30px 0 28px;
-    padding: 0 28px;
-  }
-
-  .tag-link{
-    font-family:var(--text);
-    font-weight:500;
-    font-size:12.5px;
-    letter-spacing:0.04em;
-    text-decoration:none;
-    padding:9px 14px;
-    border:1px solid var(--ink);
-    color:var(--ink);
-    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
-    display:inline-block;
-  }
-
-  .tag-link:hover{
-    background:var(--ink);
-    color:var(--paper);
-    transform: translateY(-1px);
-    text-shadow: -2px 0 var(--red), 2px 0 var(--cyan);
-  }
-
-  .tag-link.accent{
-    border-color:var(--red);
-    color:var(--red);
-  }
-  .tag-link.accent:hover{
-    background:var(--red);
-    color:var(--paper);
-  }
-
-  .creds{
-    list-style:none;
-    margin: 0 auto 56px;
-    padding: 0 28px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap: 8px 22px;
-    max-width: 760px;
-    font-family:var(--text);
-    font-weight:500;
-    font-size:11.5px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--ink);
-  }
-  .creds li{ opacity:0.6; white-space:nowrap; }
-  .creds li::before{
-    content:"";
-    display:inline-block;
-    width:5px; height:5px;
-    margin: 0 9px 2px 0;
-    background: var(--red);
-    vertical-align: middle;
-  }
-
-  hr.rule{
-    border:none;
-    border-top:1px solid var(--line-soft);
-    margin:0;
-  }
-
-  /* ---------- REEL ---------- */
-
-  .reel-section{
-    padding-block: 56px 60px;
-  }
-
-  .reel-poster{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    padding:0; border:0; margin:0;
-    background:#0b0b0d;
-    cursor:pointer;
-    display:block;
-  }
-  .reel-poster img{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    opacity:0.72;
-    transition: opacity 240ms ease, transform 600ms ease;
-  }
-  .reel-poster:hover img{ opacity:0.9; transform:scale(1.015); }
-  .reel-play{
-    position:absolute;
-    left:50%; top:50%;
-    transform:translate(-50%,-50%);
-    display:flex; align-items:center; gap:14px;
-    font-family:var(--text);
-    font-weight:500;
-    font-size:12px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--ink);
-    white-space:nowrap;
-  }
-  .reel-play .disc{
-    width:64px; height:64px;
-    border-radius:999px;
-    border:1.5px solid var(--red);
-    background: rgba(18,19,22,0.55);
-    display:flex; align-items:center; justify-content:center;
-    transition: background 160ms ease;
-  }
-  .reel-poster:hover .disc{ background: var(--red); }
+  /* reel poster, shared */
+  .ratio{ position:relative; width:100%; padding-top:56.25%; background:#0b0b0d; overflow:hidden; }
+  .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .reel-poster{ position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; margin:0; background:#0b0b0d; cursor:pointer; display:block; color:var(--ink); }
+  .reel-poster img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.72; transition:opacity 240ms ease; }
+  .reel-poster:hover img{ opacity:0.92; }
+  .reel-play{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:14px; font-family:var(--text); font-weight:600; font-size:14px; white-space:nowrap; }
+  .reel-play .disc{ width:64px; height:64px; border-radius:999px; border:1.5px solid var(--red); background:rgba(18,19,22,0.55); display:flex; align-items:center; justify-content:center; transition:background 160ms ease; }
   .reel-play .disc svg{ margin-left:4px; }
-  .reel-poster:hover .disc path{ fill: var(--paper); }
-
-  .panel-label{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    margin-bottom:14px;
-  }
-
-  .panel-label .tick{
-    font-family:var(--text);
-    font-weight:500;
-    font-size:12px;
-    color:var(--ink);
-    opacity:0.5;
-  }
-
-  .frame{
-    border:1px solid var(--ink);
-    padding:6px;
-    position:relative;
-  }
-
-  .frame::before{
-    content:"";
-    position:absolute;
-    top:-1px; left:-1px; right:-1px; bottom:-1px;
-    border:1px solid var(--line-soft);
-    pointer-events:none;
-    margin:5px;
-  }
-
-  .frame .ratio{
-    position:relative;
-    width:100%;
-    padding-top:56.25%;
-    background:#0b0b0d;
-    overflow:hidden;
-  }
-
-  .frame iframe{
-    position:absolute; inset:0; width:100%; height:100%; border:0;
-  }
-
-  /* ---------- ABOUT ---------- */
-
-  .about{
-    padding-block: 56px 60px;
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  @media (min-width: 720px){
-    .about{
-      grid-template-columns: 220px 1fr;
-      gap: 48px;
-    }
-  }
-
-  .about p{
-    font-size: 18px;
-    margin: 0 0 16px;
-    max-width: 58ch;
-  }
-
-  .about p.lede{
-    font-family:var(--text);
-    font-weight:600;
-    font-size: 24px;
-    line-height:1.3;
-    letter-spacing:-0.01em;
-    color:var(--ink);
-  }
-
-  /* ---------- CREDITS INDEX ---------- */
-
-  .credits{
-    padding-block: 56px 72px;
-  }
-
-  .credit-list{ margin-top:22px; }
-
-  .credit-row{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line-soft);
-    font-family:var(--text);
-    font-weight:500;
-    font-size: 12px;
-    letter-spacing:0.02em;
-  }
-  @media (min-width: 720px){
-    .credit-row{
-      grid-template-columns: 1fr auto;
-      align-items:baseline;
-      gap: 24px;
-    }
-  }
-
-  .credit-row:last-child{ border-bottom: 1px solid var(--line-soft); }
-
-  .credit-row .name{
-    font-family:var(--display);
-    font-size: clamp(32px, 5vw, 44px);
-    line-height:1;
-    font-weight: 400;
-    letter-spacing:0.01em;
-  }
-
-  .credit-row .name a{
-    color:inherit;
-    text-decoration:none;
-    transition: color 160ms ease;
-  }
-  .credit-row .name a:hover{
-    color: var(--red);
-    text-shadow: -2px 0 var(--red), 2px 0 var(--cyan);
-  }
-  .credit-row .name .arrow{
-    font-family:var(--text);
-    font-weight:500;
-    font-size:14px;
-    vertical-align: super;
-    margin-left:6px;
-    color: var(--red);
-  }
-
-  .credit-row .tags{
-    color: rgba(241,239,233,0.6);
-  }
-  @media (min-width: 720px){
-    .credit-row .tags{ text-align:right; }
-  }
-  .credit-row .tags .hl{ color: var(--red); opacity:1; }
-
-  /* ---------- FOOTER ---------- */
-
-  footer.wrap{
-    padding-block: 64px 120px;
-  }
-
-  .foot-grid{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap: 28px;
-  }
-
-  .foot-grid .big{
-    font-family:var(--display);
-    font-size: clamp(56px, 10vw, 104px);
-    line-height:0.9;
-    margin:0 0 14px;
-  }
-
-  .foot-mail{
-    font-family:var(--text);
-    font-weight:500;
-    font-size: clamp(14px, 2vw, 17px);
-    color: var(--red);
-    text-decoration:none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom:2px;
-  }
-  .foot-mail:hover{ color: var(--ink); }
-
-  .foot-links{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
-    font-family:var(--text);
-    font-weight:500;
-    font-size:12.5px;
-  }
-
-  .foot-links a{ text-decoration:underline; text-underline-offset:3px; text-decoration-color: var(--line); }
-  .foot-links a:hover{ text-decoration-color: var(--red); }
-
-  .foot-meta{
-    margin-top:48px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-
+  .reel-poster:hover .disc{ background:var(--red); }
+  .reel-poster:hover .disc path{ fill:var(--paper); }
   .matrix-egg{
     position:fixed;
     right:18px;
@@ -636,8 +151,193 @@
     .egg-red, .egg-cyan{ animation:none; opacity:0.5; }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
+
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  /* ---------- LAYOUT C: POSTER ---------- */
+  :root{ --g:24px; }
+  @media (min-width: 900px){ :root{ --g:40px; } }
+
+  .bar{
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    padding: 22px var(--g);
+    font-size:14px;
+  }
+  .bar .id{ display:flex; align-items:center; gap:12px; text-decoration:none; font-weight:600; }
+  .bar .id img{ height:24px; width:auto; display:block; }
+  .bar nav{ display:flex; gap:22px; }
+  .bar nav a{ text-decoration:none; color:var(--mute); }
+  .bar nav a:hover{ color:var(--ink); }
+  @media (max-width: 640px){ .bar nav{ display:none; } }
+
+  .hero{ position:relative; padding: 0 var(--g); }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:400;
+    /* BRGB is 1.602em wide in Bebas: fill the width between gutters exactly */
+    font-size: calc((100vw - 2 * var(--g)) / 1.602);
+    line-height:0.8;
+    margin: 12px 0 0;
+    letter-spacing:0;
+    white-space:nowrap;
+    user-select:none;
+  }
+  #stereo-field{
+    position:absolute;
+    left:8%; right:8%;
+    top:-6%;
+    width:84%;
+    height:112%;
+    display:block;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    padding: 0 var(--g);
+  }
+  .grid > *{ grid-column: 1 / -1; }
+
+  .intro{ padding-top:48px; padding-bottom:88px; row-gap:40px; }
+  .intro .tag{
+    font-size: clamp(26px, 3.3vw, 48px);
+    line-height:1.12;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    margin:0;
+    max-width: 20em;
+  }
+  .intro .side{ display:flex; flex-direction:column; gap:28px; }
+  @media (min-width: 900px){
+    .intro .tag{ grid-column: 1 / span 8; }
+    .intro .side{ grid-column: 10 / -1; }
+  }
+  .linklist{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+  .linklist li{ border-bottom:1px solid var(--line); }
+  .linklist a{
+    display:flex; justify-content:space-between;
+    padding: 12px 0;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+  }
+  .linklist a:hover{ color:var(--red); }
+  .linklist a.primary{ color:var(--red); }
+  .linklist a.primary:hover{ color:var(--ink); }
+  .disc{ margin:0; font-size:14px; color:var(--mute); }
+
+  .reel{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .reel .ratio{ padding-top: min(56.25%, 86vh); }
+
+  /* the red band */
+  .work{
+    background:var(--red);
+    color:var(--paper);
+    padding: 72px 0 80px;
+  }
+  .work h2, .about h2{
+    font-size:15px; font-weight:600; margin:0 0 28px;
+  }
+  .work ul{ list-style:none; margin:0; padding:0; border-top:2px solid var(--paper); }
+  .work li{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 6px 24px;
+    align-items:end;
+    padding: 18px 0 14px;
+    border-bottom:2px solid var(--paper);
+  }
+  @media (min-width: 900px){ .work li{ grid-template-columns: 1fr 300px; } }
+  .work .t{
+    font-family:var(--display);
+    font-size: clamp(54px, 8.4vw, 132px);
+    line-height:0.86;
+    text-decoration:none;
+    transition: color 120ms ease, text-shadow 120ms ease;
+  }
+  .work a.t:hover{ color:var(--ink); text-shadow: 5px 0 var(--cyan); }
+  .work .t .arrow{ font-family:var(--text); font-size:0.28em; vertical-align:top; margin-left:8px; }
+  .work .d{ font-size:15px; font-weight:600; line-height:1.35; padding-bottom:10px; }
+  .work .d span{ display:block; }
+  .work .d .by{ font-weight:500; opacity:0.8; }
+
+  .about{ padding-top:88px; padding-bottom:96px; row-gap:28px; }
+  .about h2{ color:var(--red); margin:0; }
+  .about .lede{
+    font-size: clamp(26px, 3vw, 42px);
+    line-height:1.15;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  .about .body p{ font-size:17px; margin:0 0 16px; color:rgba(241,239,233,0.86); max-width: 62ch; }
+  @media (min-width: 900px){
+    .about .lede{ grid-column: 1 / span 7; }
+    .about .body{ grid-column: 8 / -1; padding-top:8px; }
+  }
+
+  footer{ border-top:1px solid var(--line); padding: 64px 0 40px; }
+  footer .sign{
+    font-family:var(--display);
+    font-size: calc((100vw - 2 * var(--g)) / 3.575);
+    line-height:0.84;
+    margin: 0 var(--g) 32px;
+    white-space:nowrap;
+  }
+  footer .row{
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:24px;
+    padding: 0 var(--g);
+  }
+  footer .mail{
+    font-size: clamp(22px, 2.6vw, 34px);
+    font-weight:600;
+    color:var(--red);
+    text-decoration:none;
+    border-bottom:2px solid currentColor;
+  }
+  footer .mail:hover{ color:var(--ink); }
+  footer .more{ display:flex; gap:22px; font-size:14px; }
+  footer .more a{ text-underline-offset:4px; text-decoration-color:var(--line); }
+  footer .more a:hover{ text-decoration-color:var(--red); }
+  footer .colo{ padding: 40px var(--g) 0; font-size:13px; color:var(--mute); }
+
+
+  /* glitch primitives */
+  .split{ display:inline-block; position:relative; }
+  .split::before, .split::after{
+    content: attr(data-text);
+    position:absolute; top:0; left:0; width:100%;
+    mix-blend-mode: screen;
+    opacity:0;
+  }
+  .split::before{ color:var(--red); }
+  .split::after{ color:var(--cyan); }
+
+  .glitch-label{ position:relative; display:inline-block; }
+  .glitch-label::before, .glitch-label::after{
+    content: attr(data-text);
+    position:absolute; top:0; left:0; width:100%;
+    white-space:nowrap;
+    opacity:0;
+  }
+  .glitch-label::before{ color:var(--red); }
+  .glitch-label::after{ color:var(--cyan); }
+  @keyframes glitchRedSmall{
+    0%, 80%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
+    81%{ transform:translate(-5px,-2px); opacity:1; clip-path:inset(10% 0 60% 0); }
+    82%{ transform:translate(4px,2px); opacity:0.9; clip-path:inset(60% 0 5% 0); }
+    83%{ transform:translate(-4px,2px); opacity:1; clip-path:inset(25% 0 40% 0); }
+    84%{ transform:translate(3px,-2px); opacity:0.8; clip-path:inset(45% 0 15% 0); }
+    85%{ transform:translate(0,0); opacity:0; }
+  }
+  @keyframes glitchCyanSmall{
+    0%, 80%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
+    81%{ transform:translate(5px,2px); opacity:0.9; clip-path:inset(35% 0 25% 0); }
+    82%{ transform:translate(-4px,-2px); opacity:1; clip-path:inset(5% 0 65% 0); }
+    83%{ transform:translate(5px,-1px); opacity:0.85; clip-path:inset(65% 0 5% 0); }
+    84%{ transform:translate(-4px,2px); opacity:1; clip-path:inset(20% 0 45% 0); }
+    85%{ transform:translate(0,0); opacity:0; }
   }
 
   /* =========================================================
@@ -689,7 +389,7 @@
   @keyframes rollBar{ 0%{ top:-20vh; } 100%{ top:110vh; } }
 
   /* Wordmark: permanent RGB split + violent slicing */
-  .hero-name .split{
+  .split{
     animation: rgbJitter 0.16s steps(2) infinite;
   }
   @keyframes rgbJitter{
@@ -697,8 +397,8 @@
     50% { text-shadow: 7px 1px var(--red), -6px -1px var(--cyan); transform:translateX(1px); }
     100%{ text-shadow: -3px 0 var(--red), 3px 0 var(--cyan); transform:translateX(-1px); }
   }
-  .hero-name .split::before{ animation: xRed 1.05s infinite; }
-  .hero-name .split::after { animation: xCyan 1.05s infinite; }
+  .split::before{ animation: xRed 1.05s infinite; }
+  .split::after { animation: xCyan 1.05s infinite; }
   @keyframes xRed{
     0%, 55%, 100%{ transform:translate(0,0); opacity:0; clip-path:inset(0 0 0 0); }
     56%{ transform:translate(-48px,-6px); opacity:1; clip-path:inset(4% 0 78% 0); }
@@ -738,10 +438,11 @@
   .glitch-block::before{ color:var(--red);  animation: glitchRedSmall 1.9s infinite 0.4s; }
   .glitch-block::after { color:var(--cyan); animation: glitchCyanSmall 1.9s infinite 0.4s; }
 
-  .credit-row .name{ transition: transform 80ms steps(2); }
-  .credit-row:hover .name{
-    text-shadow: -3px 0 var(--red), 3px 0 var(--cyan);
-    transform: skewX(-8deg) translateX(6px);
+  .work .t{ display:inline-block; transition: transform 80ms steps(2); }
+  .work li:hover .t{
+    color:var(--ink);
+    text-shadow: -4px 0 var(--paper), 5px 0 var(--cyan);
+    transform: skewX(-8deg) translateX(10px);
   }
 
   /* Marquees */
@@ -830,15 +531,17 @@
   body.calm #noise{ display:none; }
   body.calm .crt-overlay,
   body.calm .crt-overlay::after,
-  body.calm .hero-name .split,
-  body.calm .marquee-track,
-  body.calm .marquee-track span,
+  body.calm .split,
   body.calm .blink{ animation:none; }
-  body.calm .hero-name .split{ text-shadow:none; }
-  body.calm .hero-name .split::before, body.calm .hero-name .split::after,
+  body.calm .split{ text-shadow:none; }
+  body.calm .split::before, body.calm .split::after,
   body.calm .glitch-label::before, body.calm .glitch-label::after,
   body.calm .glitch-block::before, body.calm .glitch-block::after{ animation:none; opacity:0; }
-  body.calm .marquee-track span{ color:#3FFF7A; }
+  /* banners keep rolling when glitch is off; only reduced-motion stops them */
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track, .marquee-track span{ animation:none; }
+    .marquee-track span{ color:#3FFF7A; }
+  }
   body.calm .glitch-toggle .dot{ background:var(--line); box-shadow:none; }
 </style>
 </head>
@@ -869,132 +572,104 @@
 
 <div id="glitch-root">
 
-<div class="hero">
-  <div class="wrap hero-top">
-    <span class="mark">
-      <img src="smallglasses.png" alt="BRGB" width="85" height="30" />
-      <span class="eyebrow glitch-label" data-scramble data-text="BRGB / London">BRGB / London</span>
-    </span>
-    <span class="eyebrow glitch-label" data-scramble data-text="Creative Director — Creative Technologist">Creative Director — Creative Technologist</span>
-  </div>
+<header class="bar">
+  <a class="id" href="#top" data-scramble><img src="smallglasses.png" alt="" width="68" height="24" />Patrick Girard Quinnell</a>
+  <nav aria-label="Sections">
+    <a href="#reel-s">Reel</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+</header>
 
+<div class="hero" id="top">
+  <h1 aria-label="BRGB"><span class="split" data-text="BRGB">BRGB</span></h1>
   <canvas id="stereo-field" aria-hidden="true"></canvas>
-
-  <div class="hero-name wrap">
-    <h1><span class="split" data-text="BRGB">BRGB</span></h1>
-  </div>
-
-  <p class="hero-tagline glitch-block" data-text="Patrick Girard Quinnell directs immersive, experience-led work across fashion, culture and digital media, from XR installation to real-time production and events.">
-    Patrick Girard Quinnell directs <strong>immersive, experience-led work</strong> across fashion, culture and digital media, from XR installation to real-time production and events.
-  </p>
-
-  <div class="hero-links">
-    <a class="tag-link accent" href="https://drive.google.com/file/d/1kRMNkPh4ZjBmux_XKiutk6tepk8a4gJS/view?usp=drive_link" target="_blank" rel="noopener">CV ↗</a>
-    <a class="tag-link" href="https://drive.google.com/file/d/10UboTR9bsu2uUE8bKNyATTRM1CjL9n6B/view?usp=sharing" target="_blank" rel="noopener">PDF Deck ↗</a>
-    <a class="tag-link" href="https://www.linkedin.com/in/patrick-girard-quinnell/" target="_blank" rel="noopener">LinkedIn ↗</a>
-    <a class="tag-link" href="https://www.instagram.com/bigredglassesboy/" target="_blank" rel="noopener">@Bigredglassesboy ↗</a>
-  </div>
-
-  <ul class="creds" aria-label="Highlights">
-    <li data-scramble>Immersive</li>
-    <li data-scramble>Digital Design</li>
-    <li data-scramble>Fashion</li>
-    <li data-scramble>Msuic</li>
-    <li data-scramble>Culture</li>
-    <li data-scramble>Social</li>
-  </ul>
 </div>
+
+<section class="grid intro">
+  <p class="tag glitch-block" data-text="Patrick Girard Quinnell directs immersive, experience-led work across fashion, culture and digital media, from XR installation to real-time production and events.">Patrick Girard Quinnell directs immersive, experience-led work across fashion, culture and digital media, from XR installation to real-time production and events.</p>
+  <div class="side">
+    <ul class="linklist">
+      <li><a class="primary" href="https://drive.google.com/file/d/1kRMNkPh4ZjBmux_XKiutk6tepk8a4gJS/view?usp=drive_link" target="_blank" rel="noopener"><span>CV</span><span>↗</span></a></li>
+      <li><a href="https://drive.google.com/file/d/10UboTR9bsu2uUE8bKNyATTRM1CjL9n6B/view?usp=sharing" target="_blank" rel="noopener"><span>PDF Deck</span><span>↗</span></a></li>
+      <li><a href="https://www.linkedin.com/in/patrick-girard-quinnell/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a></li>
+      <li><a href="https://www.instagram.com/bigredglassesboy/" target="_blank" rel="noopener"><span>Instagram</span><span>↗</span></a></li>
+    </ul>
+    <p class="disc" data-scramble>Immersive, Digital Design, Fashion, Music, Culture, Social.</p>
+  </div>
+</section>
 
 <div class="marquee-bar" aria-hidden="true">
-  <div class="marquee-track"><span>★ WELCOME TO BRGB.UK ★ BEST VIEWED AT 800×600 ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS ★ ★ WELCOME TO BRGB.UK ★ BEST VIEWED AT 800×600 ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS ★ </span></div>
+  <div class="marquee-track"><span>★ WELCOME TO BRGB.UK ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS ★ WELCOME TO BRGB.UK ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS </span></div>
 </div>
 
-<hr class="rule" />
-
-<div class="wrap reel-section">
-  <div class="panel-label">
-    <span class="eyebrow glitch-label" data-scramble data-text="Reel">Reel</span>
-    <span class="tick" data-scramble>2026 — Immersive, Spaces &amp; XR</span>
-  </div>
-  <div class="frame">
-    <div class="ratio" id="reel">
+<section class="reel" id="reel-s" aria-label="Reel">
+  <div class="ratio" id="reel">
       <button class="reel-poster" type="button" aria-label="Play the BRGB 2026 showreel">
         <img src="https://i.ytimg.com/vi/36RTOZhgoRc/maxresdefault.jpg" alt="" loading="lazy"
              onerror="if(this.dataset.f){this.style.display='none'}else{this.dataset.f=1;this.src='https://i.ytimg.com/vi/36RTOZhgoRc/hqdefault.jpg'}" />
         <span class="reel-play">
           <span class="disc"><svg width="18" height="20" viewBox="0 0 18 20" aria-hidden="true"><path d="M0 0 L18 10 L0 20 Z" fill="#FF5A42"/></svg></span>
-          Play reel
+          Play the 2026 reel
         </span>
       </button>
     </div>
+</section>
+
+<section class="work" id="work">
+  <div class="grid">
+    <h2 class="glitch-label" data-text="Selected work" data-scramble>Selected work</h2>
+    <ul>
+        <li>
+          <a class="t" data-scramble href="https://github.com/Bigredglassesboy/RFA" target="_blank" rel="noopener">Regenerative Fashion Archive<span class="arrow">↗</span></a>
+          <span class="d"><span class="by" data-scramble>RFA / BRGB</span><span>Industry Readiness 4.0/5.0 Award</span></span>
+        </li>
+        <li>
+          <span class="t" data-scramble>Umbro China × RFA</span>
+          <span class="d"><span class="by" data-scramble>RFA / BRGB</span><span>Design Intelligence Award, 100M+ views</span></span>
+        </li>
+        <li>
+          <span class="t" data-scramble>Cosmos Within Us</span>
+          <span class="d"><span class="by" data-scramble>Satore Studio</span><span>Venice Mostra Official Selection</span></span>
+        </li>
+        <li>
+          <span class="t" data-scramble>MSG Sphere</span>
+          <span class="d"><span class="by" data-scramble>BRGB</span><span>Content under NDA</span></span>
+        </li>
+    </ul>
   </div>
-</div>
+</section>
 
-<hr class="rule" />
-
-<div class="wrap about">
-  <span class="eyebrow glitch-label" data-scramble data-text="About">About</span>
-  <div>
-    <p class="lede" data-scramble>10+ years spent moving between the studio, the stage and the headset: building worlds that fashion and culture can actually walk into.</p>
+<section class="grid about" id="about">
+  <h2 class="glitch-label" data-text="About" data-scramble>About</h2>
+  <p class="lede" data-scramble>10+ years spent moving between the studio, the stage and the headset: building worlds that fashion and culture can actually walk into.</p>
+  <div class="body">
     <p>I'm a London-based Creative Director and Creative Technologist running the independent studio BRGB, working across large-scale installation, XR and real-time production. I was an early hire at Satore Studio, where I became Head of Creative R&amp;D and helped grow the team from a handful of people to thirty-two, working on fashion week lighting and video for Prada, Hugo Boss and Moschino. Across both, I've directed spatial and social-first work for Adidas, Umbro and Marshmallow Laser Feast.</p>
     <p>Alongside the studio, I'm Senior Lecturer in Games at the University of East London, teaching game art, immersive media and creative technology to the next set of people who'll build this stuff.</p>
   </div>
-</div>
-
-<hr class="rule" />
-
-<div class="wrap credits">
-  <span class="eyebrow glitch-label" data-scramble data-text="Selected work">Selected work</span>
-  <div class="credit-list">
-    <div class="credit-row">
-      <span class="name" data-scramble><a href="https://github.com/Bigredglassesboy/RFA" target="_blank" rel="noopener">Regenerative Fashion Archive<span class="arrow">↗</span></a></span>
-      <span class="tags">RFA / BRGB · <span class="hl">Industry Readiness 4.0/5.0 Award</span></span>
-    </div>
-    <div class="credit-row">
-      <span class="name" data-scramble>Umbro China × RFA</span>
-      <span class="tags">RFA / BRGB · <span class="hl">Design Intelligence Award</span> · 100M+ views</span>
-    </div>
-    <div class="credit-row">
-      <span class="name" data-scramble>Cosmos Within Us</span>
-      <span class="tags">Satore Studio · <span class="hl">Venice Mostra Official Selection</span></span>
-    </div>
-    <div class="credit-row">
-      <span class="name" data-scramble>MSG Sphere</span>
-      <span class="tags">BRGB · Content under NDA</span>
-    </div>
-  </div>
-</div>
+</section>
 
 <div class="marquee-bar rev" aria-hidden="true">
-  <div class="marquee-track"><span>★ SIGNAL LOST ★ RGB OVERFLOW ★ BUFFER UNDERRUN ★ DO NOT ADJUST YOUR SET ★ REALITY.EXE HAS STOPPED RESPONDING ★ ★ SIGNAL LOST ★ RGB OVERFLOW ★ BUFFER UNDERRUN ★ DO NOT ADJUST YOUR SET ★ REALITY.EXE HAS STOPPED RESPONDING ★ </span></div>
+  <div class="marquee-track"><span>★ SIGNAL LOST ★ RGB OVERFLOW ★ BUFFER UNDERRUN ★ DO NOT ADJUST YOUR SET ★ REALITY.EXE HAS STOPPED RESPONDING ★ SIGNAL LOST ★ RGB OVERFLOW ★ BUFFER UNDERRUN ★ DO NOT ADJUST YOUR SET ★ REALITY.EXE HAS STOPPED RESPONDING </span></div>
 </div>
 
-<footer class="wrap">
-  <div class="foot-grid">
-    <div>
-      <p class="big" data-scramble>Let's work together.</p>
-      <!-- TODO: swap in the address you want public -->
-      <a class="foot-mail" href="mailto:patrickqueeng@gmail.com">Email Me</a>
-    </div>
-    <div class="foot-links">
+<footer id="contact">
+  <p class="sign" data-scramble>Let's work<br/>together.</p>
+  <div class="row">
+    <a class="mail" href="mailto:patrickqueeng@gmail.com">Email Me</a>
+    <div class="more">
       <a href="https://www.linkedin.com/in/patrick-girard-quinnell/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.instagram.com/bigredglassesboy/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://drive.google.com/file/d/1kRMNkPh4ZjBmux_XKiutk6tepk8a4gJS/view?usp=drive_link" target="_blank" rel="noopener">CV</a>
     </div>
   </div>
-  <div class="retro-strip">
+  <div class="retro-strip" style="padding:0 var(--g)">
     <span class="blink-tag">NEW<span class="blink">!</span></span>
   </div>
-  <div class="foot-meta">
-    <span class="eyebrow">BRGB / Big Red Glasses Boy</span>
-    <span class="eyebrow">London · © 2026</span>
-  </div>
+  <p class="colo">BRGB / Big Red Glasses Boy. London, 2026.</p>
 </footer>
 
 </div><!-- /glitch-root -->
 
 <button class="glitch-toggle" type="button" aria-pressed="true"><span class="dot"></span>Glitch: <span class="state">on</span></button>
-
 <script>
 (function(){
   var reel = document.getElementById('reel');
@@ -1148,7 +823,7 @@
     for(var i=0;i<count;i++) scramble(scr[(Math.random()*scr.length)|0]);
   }
   scr.forEach(function(el){
-    var row = el.closest('.credit-row') || el;
+    var row = el.closest('.work li') || el;
     row.addEventListener('mouseenter', function(){ scramble(el); });
   });
   setInterval(function(){ if(!calm && Math.random() < 0.8) scrambleRandom(); }, 1400);
@@ -1406,6 +1081,7 @@
   requestAnimationFrame(loop);
 })();
 </script>
+
 
 <a href="index.html" class="matrix-egg" aria-label="Exit glitch mode, back to the main site">
   <span class="matrix-egg-icon">

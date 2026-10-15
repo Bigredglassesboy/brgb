@@ -181,6 +181,7 @@
     letter-spacing:0;
     white-space:nowrap;
     user-select:none;
+    pointer-events:none;
   }
   #stereo-field{
     position:absolute;
@@ -199,7 +200,7 @@
   }
   .grid > *{ grid-column: 1 / -1; }
 
-  .intro{ padding-top:48px; padding-bottom:88px; row-gap:40px; }
+  .intro{ position:relative; z-index:2; padding-top:48px; padding-bottom:88px; row-gap:40px; }
   .intro .tag{
     font-size: clamp(26px, 3.3vw, 48px);
     line-height:1.12;
@@ -225,7 +226,6 @@
   .linklist a:hover{ color:var(--red); }
   .linklist a.primary{ color:var(--red); }
   .linklist a.primary:hover{ color:var(--ink); }
-  .disc{ margin:0; font-size:14px; color:var(--mute); }
 
   .reel{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .reel .ratio{ padding-top: min(56.25%, 86vh); }
@@ -593,12 +593,11 @@
       <li><a href="https://www.linkedin.com/in/patrick-girard-quinnell/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a></li>
       <li><a href="https://www.instagram.com/bigredglassesboy/" target="_blank" rel="noopener"><span>Instagram</span><span>↗</span></a></li>
     </ul>
-    <p class="disc" data-scramble>Immersive, Digital Design, Fashion, Music, Culture, Social.</p>
   </div>
 </section>
 
 <div class="marquee-bar" aria-hidden="true">
-  <div class="marquee-track"><span>★ WELCOME TO BRGB.UK ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS ★ WELCOME TO BRGB.UK ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS </span></div>
+  <div class="marquee-track"><span>★ WELCOME TO BRGB.UK ★ BEST VIEWED AT 800×600 ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS ★ WELCOME TO BRGB.UK ★ BEST VIEWED AT 800×600 ★ NOW WITH 256 COLOURS ★ UNDER (PERPETUAL) CONSTRUCTION ★ REFRESH FOR BEST RESULTS </span></div>
 </div>
 
 <section class="reel" id="reel-s" aria-label="Reel">

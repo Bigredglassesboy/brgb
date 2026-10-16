@@ -42,7 +42,7 @@
   a:focus-visible, button:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
   img{ max-width:100%; }
 
-  /* reel poster, shared */
+  /* reel */
   .ratio{ position:relative; width:100%; padding-top:56.25%; background:#0b0b0d; overflow:hidden; }
   .ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
   .reel-poster{ position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; margin:0; background:#0b0b0d; cursor:pointer; display:block; color:var(--ink); }
@@ -154,7 +154,7 @@
 
   @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 
-  /* ---------- LAYOUT C: POSTER ---------- */
+  /* --- layout --- */
   :root{ --g:24px; }
   @media (min-width: 900px){ :root{ --g:40px; } }
 
@@ -174,7 +174,7 @@
   .hero h1{
     font-family:var(--display);
     font-weight:400;
-    /* BRGB is 1.602em wide in Bebas: fill the width between gutters exactly */
+    /* big brgb, fills the widht */
     font-size: calc((100vw - 2 * var(--g)) / 1.602);
     line-height:0.8;
     margin: 12px 0 0;
@@ -230,7 +230,7 @@
   .reel{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .reel .ratio{ padding-top: min(56.25%, 86vh); }
 
-  /* the red band */
+  /* red bit */
   .work{
     background:var(--red);
     color:var(--paper);
@@ -303,7 +303,7 @@
   footer .colo{ padding: 40px var(--g) 0; font-size:13px; color:var(--mute); }
 
 
-  /* glitch primitives */
+  /* glitch stuf */
   .split{ display:inline-block; position:relative; }
   .split::before, .split::after{
     content: attr(data-text);
@@ -340,9 +340,7 @@
     85%{ transform:translate(0,0); opacity:0; }
   }
 
-  /* =========================================================
-     MATRIX / GLITCH MODE  (matrix.html only)
-     ========================================================= */
+  /* matrix page */
 
   #matrix-rain, #noise{
     position:fixed; inset:0;
@@ -367,7 +365,7 @@
   body.burst.heavy #glitch-root{ filter:url(#tear); }
   body.burst.flash #glitch-root{ filter: invert(1) hue-rotate(180deg) contrast(1.4); }
 
-  /* CRT: scanlines, vignette, rolling bar, constant flicker */
+  /* crt lines */
   .crt-overlay{
     position:fixed; inset:0;
     z-index:50;
@@ -388,7 +386,7 @@
   @keyframes crtFlicker{ 0%{opacity:0.92;} 100%{opacity:1;} }
   @keyframes rollBar{ 0%{ top:-20vh; } 100%{ top:110vh; } }
 
-  /* Wordmark: permanent RGB split + violent slicing */
+  /* logo glitch */
   .split{
     animation: rgbJitter 0.16s steps(2) infinite;
   }
@@ -422,7 +420,7 @@
     88%{ transform:translate(0,0); opacity:0; }
   }
 
-  /* Labels and blocks glitch far more often */
+  /* labels */
   .glitch-label::before{ animation: glitchRedSmall 1.3s infinite; }
   .glitch-label::after { animation: glitchCyanSmall 1.3s infinite; }
 
@@ -445,7 +443,7 @@
     transform: skewX(-8deg) translateX(10px);
   }
 
-  /* Marquees */
+  /* banners */
   .marquee-bar{
     position:relative;
     overflow:hidden;
@@ -474,7 +472,7 @@
     66% { color:#3FD3E0; text-shadow:0 0 10px rgba(63,211,224,0.8); }
   }
 
-  /* Y2K footer strip */
+  /* footer */
   .retro-strip{
     display:flex;
     align-items:center;
@@ -500,7 +498,7 @@
   .blink{ animation: blinkOpacity 0.8s steps(1) infinite; }
   @keyframes blinkOpacity{ 0%{opacity:1;} 50%{opacity:0;} }
 
-  /* Glitch on/off switch */
+  /* on off buton */
   .glitch-toggle{
     position:fixed;
     left:18px; bottom:18px;
@@ -526,7 +524,7 @@
   }
   .glitch-toggle:hover{ border-color:var(--red); }
 
-  /* Calm mode (toggle off, or reduced motion) */
+  /* glitch off */
   body.calm #matrix-rain,
   body.calm #noise{ display:none; }
   body.calm .crt-overlay,
@@ -537,7 +535,7 @@
   body.calm .split::before, body.calm .split::after,
   body.calm .glitch-label::before, body.calm .glitch-label::after,
   body.calm .glitch-block::before, body.calm .glitch-block::after{ animation:none; opacity:0; }
-  /* banners keep rolling when glitch is off; only reduced-motion stops them */
+  /* banners keep going */
   @media (prefers-reduced-motion: reduce){
     .marquee-track, .marquee-track span{ animation:none; }
     .marquee-track span{ color:#3FFF7A; }
@@ -639,10 +637,10 @@
 
 <section class="grid about" id="about">
   <h2 class="glitch-label" data-text="About" data-scramble>About</h2>
-  <p class="lede" data-scramble>10+ years spent moving between the studio, the stage and the headset: building worlds that fashion and culture can actually walk into.</p>
+  <p class="lede" data-scramble>13+ years spent moving between the studio, the stage and the headset: building worlds that fashion and culture can actually walk into.</p>
   <div class="body">
-    <p>I'm a London-based Creative Director and Creative Technologist running the independent studio BRGB, working across large-scale installation, XR and real-time production. I was an early hire at Satore Studio, where I became Head of Creative R&amp;D and helped grow the team from a handful of people to thirty-two, working on fashion week lighting and video for Prada, Hugo Boss and Moschino. Across both, I've directed spatial and social-first work for Adidas, Umbro and Marshmallow Laser Feast.</p>
-    <p>Alongside the studio, I'm Senior Lecturer in Games at the University of East London, teaching game art, immersive media and creative technology to the next set of people who'll build this stuff.</p>
+    <p>I'm a London-based Creative Director and Creative Technologist running the independent studio BRGB, working across large-scale installation, XR and real-time production. I was an early hire at Satore Studio, where I became Head of Creative R&D and helped grow the team from a handful of people to thirty-two. There I built the tech and design team behind Cosmos Within Us, while also working on fashion week lighting and video for Prada, Hugo Boss and Moschino. Across both, I've directed spatial and social-first work for Adidas, Umbro and Marshmallow Laser Feast.</p>
+<p>Alongside the studio, I'm a Senior Lecturer in Games at the University of East London, teaching game art, media and creative technology.</p>
   </div>
 </section>
 
@@ -666,7 +664,7 @@
   <p class="colo">BRGB / Big Red Glasses Boy. London, 2026.</p>
 </footer>
 
-</div><!-- /glitch-root -->
+</div><!-- end -->
 
 <button class="glitch-toggle" type="button" aria-pressed="true"><span class="dot"></span>Glitch: <span class="state">on</span></button>
 <script>
@@ -692,7 +690,7 @@
   try{ var saved = localStorage.getItem('brgb-glitch'); if(saved === 'off') calm = true; if(saved === 'on' && !reduce) calm = false; }catch(e){}
   window.__brgbGlitch = false;
 
-  /* ---------- matrix rain ---------- */
+  /* rain */
   var rain = document.getElementById('matrix-rain');
   var rctx = rain.getContext('2d');
   var chars = 'アイウエオカキクケコサシスセソタチツテトBRGB01ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ#%&@$';
@@ -718,7 +716,7 @@
     }
   }
 
-  /* ---------- noise / tear layer, only drawn during bursts ---------- */
+  /* noise */
   var noise = document.getElementById('noise');
   var nctx = noise.getContext('2d');
   var palette = ['255,90,66','63,211,224','241,239,233','63,255,122','254,4,55'];
@@ -743,7 +741,7 @@
     }
   }
 
-  /* ---------- burst engine ---------- */
+  /* glitchs */
   var root = document.getElementById('glitch-root');
   var rOff = document.getElementById('rgb-r'), gbOff = document.getElementById('rgb-gb');
   var tR = document.getElementById('tear-r'), tGB = document.getElementById('tear-gb');
@@ -768,7 +766,7 @@
     var roll = Math.random();
     var heavy = roll > 0.55;
     var now = performance.now();
-    var flash = roll > 0.88 && now - lastFlash > 2500;   // never more than one flash every 2.5s
+    var flash = roll > 0.88 && now - lastFlash > 2500;   // not too flashy
     var steps = 3 + (Math.random()*(heavy?7:4)|0), k = 0;
     window.__brgbGlitch = true;
     body.classList.add('burst');
@@ -791,7 +789,7 @@
   }
   function schedule(){ clearTimeout(timer); timer = setTimeout(burst, 700 + Math.random()*2300); }
 
-  /* ---------- text scramble ---------- */
+  /* scramble txt */
   var glyphs = 'アカサタナハマヤラワ01#%&$@!?<>/\\|_=+*ﾊﾐﾋｰｳ';
   function textNodes(el){
     var out = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
@@ -827,7 +825,7 @@
   });
   setInterval(function(){ if(!calm && Math.random() < 0.8) scrambleRandom(); }, 1400);
 
-  /* ---------- on / off ---------- */
+  /* toggle */
   var btn = document.querySelector('.glitch-toggle');
   var label = btn.querySelector('.state');
   function apply(){
